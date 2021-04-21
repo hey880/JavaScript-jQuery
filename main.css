@@ -1,3 +1,7 @@
+.yellow_bg {
+    background-color: yellow;
+}
+
 .alert-box {
     background: rgb(138, 138, 238);
     color:rgb(88, 88, 247);
