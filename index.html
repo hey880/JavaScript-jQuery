@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+    <h4 id="test" class="test1">안녕하세요</h4>
+
+    <script>
+    // document.getElementById('test').innerHTML = '???'
+    // 이 document.getElentBy~~~ 처럼 선택하는 지시문을 '셀렉터' 라고함
+    // 아래는 Jquery에서의 셀렉터 $()
+    
+    // innerHTML과 같은 기능. 선택된 요소 안에 있는 모든 'HTML'을 수정
+        $('#test').html('안녕') 
+    // 안에 있는 모든 HTML이 아니라 모든 '글자'를 수정
+        $('#test').text('안녕')
+    // 수정이 아니라 그냥 출력만 하고 싶으면 아래처럼 빈칸으로 두면 됨.
+        $('#test').html()
+        $('.test1')
+
+    // $('CSS셀렉터').css(이걸, 이렇게)
+        $('#test').css('color', 'red');
+
+    // $('#test').attr(이걸, 이렇게), attr은 attribute 의 약자로
+    // src, href 등과 같은 커스텀 속성들을 수정할 때 사용.
+        $('#test').attr('src', 'dsddd.jpg')
+
+    </script>
+
+    <div class="alert-box" id="alert">
+       <p id="title">Alert 박스</p> 
+       <button id="close">X</button> 
+    </div>
+    
+    <button onclick="popup('아이디를 입력하세요.')">버튼1</button>
+    <button onclick="popup('비밀번호를 입력하세요.')">버튼2</button>
+    
+    <!--HTML은 위에서 부터 차례대로 읽어내려오다가 JS 파일을 만나면 그 JS 파일을 다 수행할 때까지 기다렸다가 다음 HTML을 읽어온다. 따라서 모든 JS(script태그)는 body 태그가 끝나기 전인 위치에 써주는 게 좋다.-->
+    <!--jQuery 설치-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+    <script>
+        function popup(message){
+            document.getElementById('alert').style.display='block';
+            document.getElementById('title').innerHTML=message;
+        }    
+
+        document.getElementById('close').addEventListener('click', function(){
+            document.getElementById('alert').style.display='none';
+        });
+    </script>
+
+    
+</body>
+</html>
