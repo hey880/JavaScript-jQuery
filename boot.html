@@ -35,7 +35,20 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
   <div class="black-background">
     <div class="white-background">
       <p>로그인하세요</p>
-      <button id="close" type="button" class="btn btn-danger">닫기</button>
+
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" id="email">
+        </div>
+        <p id="email-alert">이메일이 빈칸입니다!</p>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" id="password">
+        </div>
+        <p id="password-alert">비밀번호가 빈칸입니다!</p>
+        <button type="submit" class="btn btn-primary" id="submit">전송</button>
+        <button id="close" type="button" class="btn btn-danger">닫기</button>
+      </form>
+
     </div>
   </div>
 
@@ -62,19 +75,28 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
     <a id='login' class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
   </div>
 
-  <!--input에 입력된 값을 가져오는 jQuery 메서드는 $(요소).val() 이다. -->
-  <input id="test-input">
-
   <script>
 
-    /*jQuery에서 뭔가를 보여줄 때 제일 기본은 show()고 fadeIn, fadeOut,slideDown, slideUp 등 멋진 효과를 주는 jQuery 메서드가 많다.*/
+    $('form').on('submit',function(e){
+      //이메일 input에 입력된 값이 빈칸인 경우, 폼의 전송을 막고 안내문 띄움. 이벤트객체(e) 사용.
+      if($('#email').val() == ''){
+        e.preventDefault(); //form의 전송을 막는 코드. 
+        $('#email-alert').show();
+      }
+
+      if($('#password').val() == ''){
+        $('#password-alert').show();
+      }
+    })
+
+    //form 관련 이벤트 => change : 값이 변경되고 focus가 다른 곳으로 이동했을 때 실행
+    //input : 값이 변경될 때 계속 실행 (onChange 같은 것.)
+    $('#email').on('change', function(){
+      $('#email-alert').show();
+    })
 
     $('#login').on('click', function () {
-      if ($('#test-input').val() === '안녕') {
         $('.black-background').fadeIn();
-      } else {
-        return;
-      }
     });
 
 
