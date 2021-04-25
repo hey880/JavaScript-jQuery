@@ -30,7 +30,7 @@ z-index는 position 속성이 들어간 요소들에 쓸 수 있는 속성이며
 .white-background {
     background: white;
     width: 80%;
-    margin: -300px auto;
+    margin: 100px auto;
     padding: 20px;
     border-radius: 10px;
 }
