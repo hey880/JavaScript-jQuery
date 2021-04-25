@@ -31,6 +31,23 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
 
 <body>
 
+  <div class="left-menu">
+    <p>Menu Title</p>
+  </div>
+  
+  <!--<h3 id="hi">안녕</h3>-->
+  <script>
+
+    //animate 메서드는 중괄호 안의 css효과를 서서히 준다.
+    //구분은 콤마(,)로 한다. 두번째 파라미터는 밀리세컨즈(ms)를 의미한다.
+    /*
+    $('#hi').click(function(){
+      $('#hi').animate({ marginTop : '100px'}, 5000);
+    });
+    */
+   //보통 애니메이션 UI를 만드는 방법은 미리 html로 ui를 만들어서 감춰뒀다가 클릭 시 서서히 등장하게 하는 방식을 사용한다.
+  </script>
+
   <!--로그인 modal-->
   <div class="black-background">
     <div class="white-background">
@@ -73,15 +90,33 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <a id='login' class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
+    <a id='show-menu' class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a>
   </div>
 
   <script>
 
+    $('#show-menu').on('click',function(){
+      $('.left-menu').animate({marginLeft: '0px'})
+    })
+
+  </script>
+
+  <script>
+
+    //아래처럼 셀렉터를 변수에 저장하여 쓸 수 있다. 좋은 습관이다.
+    //셀렉터는 작동할 때 HTML탐색을 하기 때문에 작동시간이 오래 걸린다. 변수에 저장하여 사용하는 것이 효율적이다. 
+
+    //let : 재선언 불가능한 변수를 만들 때 사용한다.
+    //const : 재선언, 재할당 불가능.
+
+    //호이스팅 : 자바스크립트는 변수 선언부분(할당은 제외)을 항상 강제로 최상단으로 끌어올려 해석한다. 이것을 호이스팅이라고 한다.
+    let emailAlert = $('#email-alert');
+
     $('form').on('submit',function(e){
-      //이메일 input에 입력된 값이 빈칸인 경우, 폼의 전송을 막고 안내문 띄움. 이벤트객체(e) 사용.
+      
       if($('#email').val() == ''){
-        e.preventDefault(); //form의 전송을 막는 코드. 
-        $('#email-alert').show();
+        e.preventDefault(); 
+        emailAlert.show();
       }
 
       if($('#password').val() == ''){
@@ -89,8 +124,6 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
       }
     })
 
-    //form 관련 이벤트 => change : 값이 변경되고 focus가 다른 곳으로 이동했을 때 실행
-    //input : 값이 변경될 때 계속 실행 (onChange 같은 것.)
     $('#email').on('change', function(){
       $('#email-alert').show();
     })
@@ -104,12 +137,12 @@ HTML 코드의 제일 앞 부분에 만드는 게 적절하다.
       $('.black-background').fadeOut();
     });
 
-    /*jQuery는 이벤트리스너를 on으로 쓸 수도 있지만 그냥 아래처럼 .click 이렇게 쓸 수도 있다.*/
-    //slideToggle(), fadeToggle() 메서드를 쓰면 slideDown/UP, fadeIn/Out을 펼치고 접을 수 있게 해준다.
-    //그냥 toggle()메서드를 쓰면 show/hide를 수행해준다.
+    
     $('#nav-sub-button').click(function () {
       $('.nav-sub').slideToggle();
     });
+
+
   </script>
 
 
