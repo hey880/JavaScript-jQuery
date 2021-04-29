@@ -24,7 +24,11 @@ z-index는 position 속성이 들어간 요소들에 쓸 수 있는 속성이며
     z-index: 5;
     width: 100%;
     height: 100%;
-    display: none;
+    /*display: none;*/
+    display: block;
+    transition: all 1s;
+    transform: translateY(-1000px)
+    /*Y축으로 -1000px 움직여달라는 거고 margin-top보다 부드럽게 움직인다.이게 애니메이션 시작화면*/
 }
 
 .white-background {
