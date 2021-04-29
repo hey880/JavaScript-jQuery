@@ -27,6 +27,12 @@
     height: 400px;
 }
 
+.slide-before {
+    position: absolute;
+    top: 45%;
+    left: 0;
+}
+
 .slide-next {
     /*position absolute 쓰려면 상위 요소에 position relative 필요*/
     position: absolute;

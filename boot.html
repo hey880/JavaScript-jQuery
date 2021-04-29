@@ -92,6 +92,7 @@
       <img src="./img/3.jpg">
     </div>
   </div>
+  <button class="slide-before">Before</button>
   <button class="slide-next">Next</button>
 </div>
 
@@ -105,23 +106,31 @@
 
   var currentPic = 1; //지금 몇번째 사진이 보이는지 임의 기본값 할당용
 
+  $('.slide-before').click(function(){
+
+    //사진 3을 보고 있으면 -100vw, 사진 2를 보고 있으면 -0vw로 
+    //변환시켜야 함.
+    $('.slide-container').css('transform', 'translateX(-' + (currentPic - 2) + '00vw)');
+
+    //3번사진을 볼 때 위에서 -100vw 이동시켜주고 그러면 우리는
+    //2번 사진을 보고 있게 됨. 보이는 사진만 변했다 뿐이지 아직 currentPic 값은 3이죠.
+    //3은 1보다 크니까 -1 하게 되면 currentPic = 2가 되고 2번 사진을 보고 있는 거에 맞게 값이 변하는 거임.
+   if ( currentPic > 1 ) { 
+        currentPic -= 1;
+    } 
+
+})
+
+
   $('.slide-next').click(function(){
 
-    //사진 1이 보이면 사진 2를 보여주세요
-    if(currentPic == 1){
-      $('.slide-container').css('transform', 'translateX(-100vw)')
+    if(currentPic < 3) {
 
-    //지금 보이는 사진은 2라고 할당하기. 그러면 또 next 버튼 눌렀을 때 그 다음 사진으로 넘어가는 조건에 걸린다.
-      currentPic = 2;
+      $('.slide-container').css('transform', 'translateX(-'+currentPic+'00vw)');
 
-    //사진 2가 보이면 사진 3을 보여주세요
-    }else if(currentPic == 2){
-      $('.slide-container').css('transform', 'translateX(-200vw)')
-
-      currentPic = 3;
-    }else if(currentPic == 3){
-      $('.slide-container').css('transform', 'translate(0)')
+      currentPic += 1;
     }
+  
   });
 
 </script>
