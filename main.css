@@ -1,6 +1,3 @@
-/*margin-left를 -150px을 줘서 nav바를 숨기고
-margin-left: 0px;로 바꿔서 나타나게 하는 과정을 서서히 진행시킨다.
-*/
 .left-menu {
     width: 150px;
     height: 100%;
@@ -10,25 +7,42 @@ margin-left: 0px;로 바꿔서 나타나게 하는 과정을 서서히 진행시
     margin-left: -150px; 
 }
 
-/*
-position : fixed 라는 속성을 이용하시면 브라우저 화면에 딱 달라붙는 요소를 만들어낼 수 있습니다. 그리고 z-index 등을 조정하시면 맨 앞에 붕 띄우기도 가능하지요. 
+.slide-container {
+    width: 300vw;
+    transition: transform 1s;
+    /*transform 속성만 1초에 걸쳐서 변하게 해주세요*/
+}
 
-z-index는 position 속성이 들어간 요소들에 쓸 수 있는 속성이며 값이 클 수록 맨 앞으로 가져옵니다. (= 워드나 피피티의 맨 앞으로보내기/뒤로보내기 기능)
-*/
-/*부트스트랩이 z-index를 1~4까지 쓰고 있기 때문에
-5이상 주면 모든 요소를 투과해서 앞에 존재한다.
-*/
+.slide-box {
+    width: 100vw;
+    /*vw는 viewport width 뷰포트는 실제 브라우저 화면을 나타낸다. vw는 그것의 몇프로를 차지할지 나타내는 단위.*/
+    float: left;
+    text-align: center;
+}
+
+.slide-box img {
+    /*slide-box 클래스에 있는 이미지들을 부모 크기의 100% width로
+    맞춰달라는 것*/
+    width: 600px;
+    height: 400px;
+}
+
+.slide-next {
+    /*position absolute 쓰려면 상위 요소에 position relative 필요*/
+    position: absolute;
+    top: 45%;
+    right: 0;
+}
+
 .black-background {
     background: rgba(0,0,0,0.5);
     position: fixed;
     z-index: 5;
     width: 100%;
     height: 100%;
-    /*display: none;*/
     display: block;
     transition: all 1s;
     transform: translateY(-1000px)
-    /*Y축으로 -1000px 움직여달라는 거고 margin-top보다 부드럽게 움직인다.이게 애니메이션 시작화면*/
 }
 
 .white-background {
@@ -88,7 +102,7 @@ z-index는 position 속성이 들어간 요소들에 쓸 수 있는 속성이며
 
 /*background-size:cover는 이미지 사이즈를 반응형으로 바꿔준다. */
 .main-background {
-    background-image: url(movies.jpg);
+    background-image: url(./img/movies.jpg);
     background-size: cover;
     color: white;
     border-radius: 0px;

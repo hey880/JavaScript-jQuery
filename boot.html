@@ -52,20 +52,20 @@
 
   <!--nav-->
   <div class="nav-menu">
-    <h4 style="margin: 0">Shirts Studio</h4>
-    <a id='nav-sub-button'>Products</a>
+    <h4 style="margin: 0">Movie Studio</h4>
+    <a id='nav-sub-button'>Movies</a>
   </div>
 
   <!--bootstrap의 list-group-->
   <ul class="list-group nav-sub">
-    <li class="list-group-item">Outer</li>
-    <li class="list-group-item">Innerwear</li>
-    <li class="list-group-item">Shirts</li>
+    <li class="list-group-item">Korea</li>
+    <li class="list-group-item">Other Country</li>
+    <li class="list-group-item">Etc</li>
   </ul>
 
   <!--클래스명에 css 이름 부여해서 설정하자. main-background -->
   <div class="jumbotron main-background">
-    <h1 class="display-4">Shirts Studio</h1>
+    <h1 class="display-4">Movie Studio</h1>
     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
       featured content or information.</p>
     <hr class="my-4">
@@ -73,6 +73,79 @@
     <a id='login' class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
     <a id='show-menu' class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a>
   </div>
+
+  <!--Carousel 구현-->
+
+  <!--Y축 마진, 텍스트 가운데 정렬 부트스트랩 문법-->
+  <h4 class="my-4 text-center">Best Movies</h4>
+
+  <!--이미지 가로 스크롤바 없애는 설정 overflow: hidden-->
+<div style="overflow: hidden; position: relative">
+  <div class="slide-container">
+    <div class="slide-box">
+      <img src="./img/1.jpg">
+    </div>
+    <div class="slide-box">
+      <img src="./img/2.jpg">
+    </div>
+    <div class="slide-box">
+      <img src="./img/3.jpg">
+    </div>
+  </div>
+  <button class="slide-next">Next</button>
+</div>
+
+<button class="slide-1">1</button>
+<button class="slide-2">2</button>
+<button class="slide-3">3</button>
+
+<div class="my-5"></div>
+
+<script>
+
+  var currentPic = 1; //지금 몇번째 사진이 보이는지 임의 기본값 할당용
+
+  $('.slide-next').click(function(){
+
+    //사진 1이 보이면 사진 2를 보여주세요
+    if(currentPic == 1){
+      $('.slide-container').css('transform', 'translateX(-100vw)')
+
+    //지금 보이는 사진은 2라고 할당하기. 그러면 또 next 버튼 눌렀을 때 그 다음 사진으로 넘어가는 조건에 걸린다.
+      currentPic = 2;
+
+    //사진 2가 보이면 사진 3을 보여주세요
+    }else if(currentPic == 2){
+      $('.slide-container').css('transform', 'translateX(-200vw)')
+
+      currentPic = 3;
+    }else if(currentPic == 3){
+      $('.slide-container').css('transform', 'translate(0)')
+    }
+  });
+
+</script>
+
+<script>
+
+$('.slide-1').click(function() {
+    
+    $('.slide-container').css('transform', 'translate(0)')
+    
+  })
+
+  $('.slide-2').click(function() {
+    //사진 담긴 컨테이너를 왼쪽으로 움직이면 오른쪽에 있던 사진이
+    //보이겠죠. css 설정합시다.
+    $('.slide-container').css('transform', 'translateX(-100vw)')
+    
+  })
+
+  $('.slide-3').click(function() {
+    $('.slide-container').css('transform', 'translateX(-200vw)')
+  })
+
+</script>
 
   <script>
 
@@ -95,7 +168,7 @@
 
       var emailAddress = $('#email').val();
       
-      var passwordregExp = /^[A-Z]$/;
+      var passwordregExp = /[A-Z]+/;
 
       var pwd = $('#password').val();
 
@@ -114,15 +187,7 @@
         e.preventDefault()
         $('#password-alert2').show();
       }
-   
-    //   if($('#email').val() == ''){
-    //     e.preventDefault(); 
-    //     emailAlert.show();
-    //   }
 
-    //   if($('#password').val() == ''){
-    //     $('#password-alert').show();
-    //   }
      })
 
     $('#email').on('change', function(){
@@ -143,19 +208,7 @@
       $('.nav-sub').slideToggle();
     });
 
-    //정규식 => 문자열을 검사할 때 사용한다.
-    /abc/.test('abcdefg'); //=>지금 'abcdefg'문자열에 abc가 있나요? 브라우저의 콘솔창에 입력해서 확인 가능. 참이면 true가 반환된다.
-
-    //정규식 문법 /[A-z]/ 이렇게 괄호를 쓸 수 있다. A-z까지를 의미.
-    // 역슬래쉬 : /\S/.test('#') => \S는 특수문자 포함 모든 문자를 의미. 모든 문자지만 해당 문자 딱 하나를 의미한다. 검사할 문자가 하나가 아니라 shjkahj이런식으로 여러글자면 /\S+@/ 이런식으로 +를 붙여준다. +는 뒤에있는 것도 계속 찾아달라는 것.
-    // /\S@/.test('t@') => \S@ 이렇게 쓰면 모든문자 뒤에 @가 오는지 검사하는 것.
-
-    // .은 다른 작업을 수행할 때도 쓰이는 문자이기 때문에 \. 이렇게 써줘야(escape처리) 문자로서의 . 으로 인식된다. 
-    //아래는 대략적으로 작성한 이메일 검사 정규식.
-
-    //이메일은 어쩌구@어쩌구.어쩌구 이렇게 되어야합니다. 
-    //모든 문자 사이에 @ 그리고 .이라는 특수문자가 와야합니다. 
-    // /\S+@\S+\.\S+/.test('asdb@asd.com')
+    
   </script>
 
 
