@@ -138,3 +138,7 @@
     color: white;
     border-radius: 0px;
 }
+
+.size-select {
+    display: none;
+}
