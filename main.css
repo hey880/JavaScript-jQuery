@@ -1,10 +1,11 @@
 .left-menu {
-    width: 150px;
+    width: 200px;
     height: 100%;
     background: black;
     color: white;
     position: fixed;
-    margin-left: -150px; 
+    margin-left: -200px; 
+    z-index: 5;
 }
 
 .slide-container {
@@ -31,6 +32,8 @@
     position: absolute;
     top: 45%;
     left: 0;
+    margin-left: 20%;
+    width: 70px;
 }
 
 .slide-next {
@@ -38,6 +41,8 @@
     position: absolute;
     top: 45%;
     right: 0;
+    margin-right: 20%;
+    width: 70px;
 }
 
 .black-background {
@@ -96,6 +101,26 @@
     justify-content: space-between;
     padding: 15px;
     align-items: center;
+    background-color: transparent; /*배경 투명하게?*/
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    color: white;
+    transition: 0.5s;
+}
+
+.large-logo {
+    font-size: 30px;
+    transition: all 0.5s;
+}
+
+.small-logo {
+    font-size: 20px;
+}
+
+.nav-black {
+    background: white;
+    color: black;
 }
 
 .nav-sub {
