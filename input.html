@@ -28,31 +28,39 @@
       
           <p>상품선택</p>
           <select class="form-control" id="option1">
-            <option>모자</option>
+            <option>바지</option>
             <option>셔츠</option>
           </select>
 
         <div class="size-select">
             <p class="mt-4">사이즈선택</p>
-            <select class="form=control" id="option1">
-                <option>95</option>
-                <option>100</option>
-                <option>105</option>
+            <select class="form-control" id="option2">
+
             </select>
         </div>
         </div>
       </form>
 
       <script>
-          //input 요소에 대한 change 이벤트는 input 창에 값을 입력하고 포커스가 다른 고승로 이동하면 작동하는 반면, select 요소에 대한 change 이벤트는 옵션을 선택하면 작동한다.
-
-          //input 이벤트는 input요소에 값이 입력될 때마다 바뀌는 이벤트. onChange와 유사
         $('#option1').on('change', function(){
-            //해당 select 값이 바뀌면 코드 실행
+
             if($('#option1').val() === '셔츠') {
-                $('.size-select').show()
-            }else{
-                $('.size-select').hide();
+                //템플릿을 만들어서 append로 html에 추가해주기
+                //html을 동적으로 생성.
+                //벡틱을 쓰면 문자열 작성 시 엔터를 쓸 수 있다.
+                //아래 코드대로 동작시 셔츠를 선택하면 계속하여 option2에 사이즈 메뉴가 추가된다.
+                //방지하기 위해 셔츠 선택 시 우선 option2에 있는 HTML을 지워주는 코드를 적자.
+                $('#option2').html('')
+                let template = `<option>95</option>
+                <option>100</option>
+                <option>105</option>`;
+                $('#option2').append(template);
+            } else if ($('#option1').val() === '바지') {
+                $('#option2').html('')
+                let template2 = `<option>28</option>
+                <option>30</option>
+                <option>32</option>`;
+                $('#option2').append(template2);
             }
         });
 
