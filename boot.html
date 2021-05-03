@@ -64,12 +64,6 @@
   </ul>
 
   <script>
-    //scroll 내렸을 시 최종화면으로 변해서 nav-menu의 background가 white가 되게 만들자.
-
-    //여기서 window는 viewport를 의미한다.
-    //scroll이 움직일 때 nav-black이라는 클래스를 .nav-menu에
-    //부착해주세요. css에 보면 nav-black이라는 클래스에 스타일 추가 되어 있음.
-    //scroll 함수는 여러번 연속하여 실행되기 때문에 성능저하로 이어질 수 있다. 여러번 쓰지 말고 한 번만 써주자.
     $(window).on('scroll', function(){
       if ($(window).scrollTop() > 100) {
         $('.nav-menu').addClass('nav-black');
@@ -78,10 +72,6 @@
         $('.nav-menu').removeClass('nav-black');
         $('.nav-menu h4').removeClass('small-logo')
       }
-
-      // scrollTop은 px단위로 스크롤바 위치를 알려주는 함수
-      //console.log($(window).scrollTop(114));
-
     })
 
   </script>
@@ -127,17 +117,12 @@
 
 <script>
 
-  var currentPic = 1; //지금 몇번째 사진이 보이는지 임의 기본값 할당용
+  var currentPic = 1; 
 
   $('.slide-before').click(function(){
 
-    //사진 3을 보고 있으면 -100vw, 사진 2를 보고 있으면 -0vw로 
-    //변환시켜야 함.
     $('.slide-container').css('transform', 'translateX(-' + (currentPic - 2) + '00vw)');
 
-    //3번사진을 볼 때 위에서 -100vw 이동시켜주고 그러면 우리는
-    //2번 사진을 보고 있게 됨. 보이는 사진만 변했다 뿐이지 아직 currentPic 값은 3이죠.
-    //3은 1보다 크니까 -1 하게 되면 currentPic = 2가 되고 2번 사진을 보고 있는 거에 맞게 값이 변하는 거임.
    if ( currentPic > 1 ) { 
         currentPic -= 1;
     } 
@@ -167,8 +152,7 @@ $('.slide-1').click(function() {
   })
 
   $('.slide-2').click(function() {
-    //사진 담긴 컨테이너를 왼쪽으로 움직이면 오른쪽에 있던 사진이
-    //보이겠죠. css 설정합시다.
+
     $('.slide-container').css('transform', 'translateX(-100vw)')
     
   })
@@ -243,7 +227,70 @@ $('.slide-1').click(function() {
     
   </script>
 
+<!--tab-->
 
+<style>
+  ul.list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+  }
+  ul.list::after {
+	content: '';
+	display: block;
+	clear: both;
+  }
+  .tab-button {
+	display: block;
+	padding: 10px 20px 10px 20px;
+	float: left;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	color: grey;
+	text-decoration: none;
+	cursor: pointer;
+  }
+  .active {
+	border-top: 2px solid orange;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid white;
+	border-left: 1px solid #ccc;
+	color: black;
+	margin-top: -2px;
+  }
+  .tab-content {
+	display: none;
+	padding: 10px;
+  }
+  .show {
+	display: block;
+  }
+</style>
+
+
+<div class="container mt-5" style="margin-bottom: 500px;">
+	<ul class="list">
+		<li class="tab-button">Products</li>
+    <!-- active 라는 클래스를 추가하면 버튼 클릭시 주황색 선이 생긴다. -->
+		<li class="tab-button active">Information</li>
+		<li class="tab-button">Shipping</li>
+	</ul>
+
+	<div class="tab-content">
+		<p>상품설명입니다. Product</p>
+	</div>
+  <!-- show 라는 클래스를 부착하면 원하는 탭 내용이 보인다. -->
+	<div class="tab-content show">
+		<p>상품정보입니다. Info</p>
+	</div>
+	<div class="tab-content">
+		<p>배송정보입니다. Shipping</p>
+	</div>
+</div>
+
+<!--tab 관리하는 js 파일-->
+<script src="tab.js"></script>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
