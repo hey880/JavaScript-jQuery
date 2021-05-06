@@ -142,3 +142,27 @@
 .size-select {
     display: block;
 }
+
+.grey {
+    background: black;
+    height: 2000px;
+    margin-top: 600px;
+    margin-bottom: 600px;
+}
+
+.sticky {
+    position: sticky;
+    /*sticky 주의점 : 
+    1. 좌표속성과 함께 써야한다. 여기서는 top에서부터
+    100px 위치로 고정.
+    2. 당연히 sticky가 고정된 요소가 담긴 부모요소의 높이가 더 길어야한다.
+    */
+    top: 100px;
+    float: right;
+}
+
+.left-text {
+    float: left;
+    color: white;
+    padding: 20px;
+}
