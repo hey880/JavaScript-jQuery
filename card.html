@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+
+    <!--우리가 작성한 css 파일-->
+    <link href="main.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="card-background">
+        <div class="card-box">
+            <img src="img/1.jpg">
+        </div>
+        <div class="card-box">
+            <img src="img/2.jpg">
+        </div>
+        <div class="card-box">
+            <img src="img/3.jpg">
+        </div>
+    </div>
+
+    <script>
+        //window는 viewport를 의미
+        $(window).scroll(function(){
+            let height = $(window).scrollTop();
+
+            console.log(height)
+            //1차 방정식으로 직선 y = ax + b;
+            let y = (-1/400) * height + 115/50;
+            let y2 = (-1/200) * height + 500/85;
+
+            /*
+            사이즈를 줄이는건 transform : scale(0.9) 이런 속성을 이용. 
+            그런데 0.9를 그대로 넣는게 아니라 미지의 변수 z같은걸 만들어서 
+            z = a * 높이 + b 이렇게 수식을 세운 뒤 높이가 650일 때 z는 1, 
+            높이가 1150일 때 z는 0.9 이니까 대입법으로 a와 b라는 상수를 구하면 
+             var z = (-1/5000) * 높이 + 565/500;
+            $('.card-box').eq(0).css('transform', `scale( ${z} )`);
+            */
+
+            let s = (-1/5000) * height + 565/500;
+
+            $('.card-box').eq(0).css('opacity', y);
+            $('.card-box').eq(0).css('transform', `scale( ${s} )`);
+            $('.card-box').eq(1).css('opacity', y2);
+            $('.card-box').eq(1).css('transform', `scale( ${s} )`);
+
+        })
+    </script>
+
+</body>
+
+</html>
