@@ -41,6 +41,41 @@
         </div>
       </form>
 
+      <h4 id="hello">임시글씨</h4>
+      <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <button class="btn btn-danger">상품 보기</button>
+
+      <script>
+
+        $('.btn-danger').click(function(){
+            $.ajax({
+                url : 'https://codingapple1.github.io/data.json',
+                type : 'GET' 
+                //ajax 요청 성공시 done 함수 실행
+            }).done(function(데이터){
+                
+                brand: {데이터.brand}; 
+                $('.card-title').html(데이터.model); 
+                $('.card-text').html(데이터.price); 
+                $('.card-img-top').attr('src', 데이터.img); 
+             
+            }).fail(function(){
+                //ajax 요청 실패시
+            }).always(function(){
+                //ajax 요청시 항상 실행
+            });
+            
+        });
+
+      </script>
+
       <script>
 
         let size = [26,28,30,32,34,36];       
@@ -66,7 +101,8 @@
                     $('#option2').append(template2);
                 })
             }
-        });
+        })
+
 
       </script>
 
